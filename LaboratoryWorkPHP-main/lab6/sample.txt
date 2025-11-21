@@ -1,0 +1,1 @@
+This is a sample file for Lab 6 download counter.

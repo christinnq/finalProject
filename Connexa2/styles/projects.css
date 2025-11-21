@@ -1,0 +1,357 @@
+:root {
+  --clr-primary: #40223B;
+  --clr-secondary: #8d8daa;
+
+  --clr-done: #3ba55d;
+  --clr-progress: #3b82f6;
+  --clr-notstarted: #ffffff;
+}
+
+#new-project-btn:hover {
+  background-color: var(--clr-brand-main);
+}
+
+.dashboard-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(517px, 1fr));
+  gap: 50px;
+}
+
+.search-bar {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  background: var(--bg-container);
+  border: 1px solid var( --border-container);
+  border-radius: 10px;
+  padding: 0.6rem 1rem;
+}
+
+.search-bar img {
+  width: 20px;
+  height: 20px;
+  margin-right: 0.8rem;
+  opacity: 0.8;
+}
+
+.search-bar input {
+  border: none;
+  outline: none;
+  width: 100%;
+  font-size: 1rem;
+  background: transparent;
+  color: #000;
+}
+.search-bar input::placeholder {
+  color: #431E3E;
+}
+
+.project-card {
+  width: 525px;
+  background: var(--bg-container);
+  border: 1px solid var(--border-container);
+  border-radius: 12px;
+  padding: 18px;
+  position: relative;
+  font-family: var( --font-body);
+  transition: 0.3s;
+}
+
+.project-card:hover {
+  transform: translateY(-3px);
+}
+
+.status-area {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.status-btn {
+  border: none;
+  color: #000;
+  border-radius: 20px;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.status-btn.not-started { background: var(--clr-notstarted); }
+.status-btn.in-progress { background: var(--clr-progress); color: white; }
+.status-btn.done { background: var(--clr-done); color: white; }
+
+.menu-btn {
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.status-dropdown, .menu-dropdown {
+  position: absolute;
+  top: 1.6rem;
+  right: 1rem;
+  background: var(--bg-main);
+  border-radius: 10px;
+  border: 1px solid var(--border-container);
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+  z-index: 10;
+}
+
+.status-option, .menu-option {
+  padding: 0.6rem 1rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: 0.2s;
+}
+
+.status-option:hover, .menu-option:hover {
+  background: #f2f2f2;
+}
+
+.project-card h2 {
+  font-size: 1.25rem;
+  font-weight: var(--font-weight-bold);
+  color: var(--clr-black);
+  margin-bottom: 0.3rem;
+}
+
+.project-card p {
+  font-size: 0.95rem;
+  color: var(--clr-black);
+  margin-bottom: 0.6rem;
+}
+
+.project-info {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px 75px;
+  font-size: 0.9rem;
+  color: var(--txt-body);
+  margin-bottom: 20px;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.info-icon {
+  width: 15px;
+  height: 15px;
+}
+
+.progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  color: var(--clr-black);
+  margin-bottom: 0.3rem;
+  font-weight: 600;
+}
+
+.progress-container {
+  margin-bottom: 26px;
+}
+
+.progress-bar {
+  height: 8px;
+  border-radius: 6px;
+  overflow: hidden;
+  background: #DCD9D9;
+}
+
+.progress {
+  height: 100%;
+  background: var(--txt-accent);
+  border-radius: 6px;
+  transition: width 0.4s ease;
+}
+
+.card-buttons {
+  display: flex;
+  gap: 30px;
+}
+
+.card-buttons button {
+  flex: 1;
+  padding: 10px 30px;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-details { background: var(--bg-button); color: white; }
+.btn-log { background: var(--clr-brand-main); color: white; }
+.btn-details:hover, .btn-log:hover { opacity: 0.85; }
+
+.popup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  font-family: var(--font-body);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 200;
+}
+
+.popup-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background: var(--bg-container);
+  border: 1px solid var(--border-container);
+  border-radius: 14px;
+  padding: 2rem;
+  width: 744px;
+  position: relative;
+  animation: popupFade 0.3s ease;
+}
+
+@keyframes popupFade {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+hr{
+  background-color: var(--clr-grey-600);
+  height: 2.5px;
+  width: calc(100% + 4rem);
+  margin-left: -2rem;
+
+}
+.close-btn {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.popup-content form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-row {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.form-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.form-group.full-width {
+  width: 100%;
+}
+
+.form-group label {
+  font-weight: var(--font-weight-semibold);
+  color: var(--clr-black);
+  font-size: 15px;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  border: 1px solid var(--border-container);
+  border-radius: 8px;
+  padding: 10px 25px;
+  font-size: 1rem;
+  color: #000;
+  background: var(--bg-main);
+  font-family: var(--font-body);
+  box-sizing: border-box;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder,
+.form-group select::placeholder {
+  font-family: var(--font-body);
+  color: var(--clr-grey-600);
+  font-size: 12px;
+  font-weight: var(--font-weight-medium);
+}
+
+/* === FIX pentru "Due Date" === */
+input[type="date"] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding: 10px 25px;
+}
+
+input[type="date"]::-webkit-datetime-edit-fields-wrapper {
+  padding: 0;
+}
+
+input[type="date"]::-webkit-inner-spin-button,
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(25%);
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.form-group textarea {
+  resize: none;
+  min-height: 130px;
+  line-height: 1.4;
+  height: auto;
+}
+
+.form-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 10px;
+}
+
+.btn-cancel, .btn-create {
+  padding: 10px 30px;
+  width: 329px;
+  border-radius: 7px;
+  font-weight: var(--font-weight-bold);
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-cancel {
+  background: var(--bg-main);
+  color: var(--clr-grey-600);
+  border: 1px solid var(--border-container);
+}
+
+.btn-cancel:hover { background: var(--clr-brand-main); }
+
+.btn-create {
+  background: var(--clr-brand-main);
+  border: none;
+  color: white;
+}
+
+.btn-create:hover { opacity: 0.9; }
